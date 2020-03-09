@@ -18,6 +18,9 @@ namespace WindowsFormsApp3
         public Form1()
         {
             InitializeComponent();
+            this.ShowInTaskbar = false;
+            notifyIcon1.Click += notifyIcon1_Click;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -110,6 +113,23 @@ namespace WindowsFormsApp3
             {
                 treeView1.Nodes.Add(folder);
             }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+            this.Show();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();
         }
     }
 }
